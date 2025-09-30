@@ -42,7 +42,5 @@ def index():
             output = result.stdout.decode() + result.stderr.decode()
         except Exception as e:
             output = str(e)
-    return render_template_string(HTML, output=output)
-
 if __name__ == '__main__':
     app.run(debug=True)
