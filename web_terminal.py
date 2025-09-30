@@ -45,4 +45,4 @@ def index():
     return render_template_string(HTML, output=output)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5050, debug=True)
+    app.run(debug=True)
