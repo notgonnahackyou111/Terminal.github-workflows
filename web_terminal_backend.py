@@ -2,8 +2,16 @@ from flask import Flask, request, jsonify, send_from_directory
 import sys
 import io
 import os
-sys.path.append(os.path.join(os.path.dirname(__file__), '.github', 'workflows'))
-from terminal_emulator import TerminalEmulator
+import importlib.util
+
+terminal_emulator_path = os.path.join(os.path.dirname(__file__), '.github', 'workflows', 'terminal_emulator.py')
+if not os.path.exists(terminal_emulator_path):
+    raise ImportError("terminal_emulator.py not found in .github/workflows")
+
+spec = importlib.util.spec_from_file_location("terminal_emulator", terminal_emulator_path)
+terminal_emulator = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(terminal_emulator)
+TerminalEmulator = terminal_emulator.TerminalEmulator
 
 app = Flask(__name__)
 terminal = TerminalEmulator()
