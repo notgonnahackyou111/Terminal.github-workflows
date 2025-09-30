@@ -1,0 +1,19 @@
+{
+  "name": "web-terminal-emulator",
+  "version": "1.0.0",
+  "description": "A simple web interface for a terminal emulator.",
+  "main": "src/index.html",
+  "scripts": {
+    "start": "live-server src",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "paramiko": "^2.7.2"
+  },
+  "devDependencies": {
+    "typescript": "^4.5.4",
+    "live-server": "^1.2.1"
+  },
+  "author": "Your Name",
+  "license": "MIT"
+}
