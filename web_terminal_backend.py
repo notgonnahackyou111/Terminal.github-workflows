@@ -23,6 +23,10 @@ def run_command():
         sys.stdout = old_stdout
     return jsonify({'output': output})
 
+@app.route('/commands', methods=['GET'])
+def get_commands():
+    return jsonify({'commands': terminal.get_command_index()})
+
 @app.route('/')
 def serve_html():
     return send_from_directory('.', 'web_terminal.html')

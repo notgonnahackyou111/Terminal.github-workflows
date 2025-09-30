@@ -211,6 +211,12 @@ class TerminalEmulator:
         else:
             return None
 
+    def get_command_index(self):
+        """
+        Returns a list of all commands entered in the session.
+        """
+        return self.command_history
+
 class SSHClient:
     """
     A class to handle SSH connections and commands.

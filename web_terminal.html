@@ -20,8 +20,15 @@
         </form>
         <h4>Output:</h4>
         <pre id="output"></pre>
+        <h4>Command Index:</h4>
+        <pre id="command-index"></pre>
     </div>
     <script>
+        async function updateCommandIndex() {
+            const res = await fetch('/commands');
+            const data = await res.json();
+            document.getElementById('command-index').textContent = data.commands.join('\n');
+        }
         document.getElementById('terminal-form').onsubmit = async function(e) {
             e.preventDefault();
             const cmd = document.getElementById('command').value;
@@ -32,7 +39,9 @@
             });
             const data = await res.json();
             document.getElementById('output').textContent = data.output;
+            updateCommandIndex();
         };
+        updateCommandIndex();
     </script>
 </body>
 </html>
